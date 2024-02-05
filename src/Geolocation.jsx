@@ -10,7 +10,7 @@ const Geolocation = () => {
   const [lng, setLng] = useState("");
   const [city, setCity] = useState("");
   
-
+// My name is yash
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
