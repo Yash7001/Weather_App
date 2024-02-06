@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import WeatherApp from "./weatherApp";
-import SearchBox from "./SearchBox";
 import axios from "axios";
 
 let API_KEY = "0a53f46e946e5ff22df4b471f28f8487";
@@ -10,7 +8,6 @@ const Geolocation = () => {
   const [lng, setLng] = useState(null);
   const [city, setCity] = useState("");
 
-  // My name is yash
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -38,6 +35,7 @@ const Geolocation = () => {
           <p>Latitude: {lat}</p>
           <p>Longitude: {lng}</p>
           <p>City: {city}</p>
+          {/* <SearchBox city={city} updateInfo={(info) => setCity(info.city)} /> */}
         </div>
       ) : (
         <p>Loading...</p>
@@ -47,3 +45,5 @@ const Geolocation = () => {
 };
 
 export default Geolocation;
+
+
