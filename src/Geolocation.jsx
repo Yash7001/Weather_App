@@ -6,11 +6,11 @@ import axios from "axios";
 let API_KEY = "0a53f46e946e5ff22df4b471f28f8487";
 const limit = 10;
 const Geolocation = () => {
-  const [lat, setLat] = useState("");
-  const [lng, setLng] = useState("");
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
   const [city, setCity] = useState("");
-  
-// My name is yash
+
+  // My name is yash
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -21,17 +21,19 @@ const Geolocation = () => {
         console.error(error);
       }
     );
-    let currLocation = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lng}&limit=${limit}&appid=${API_KEY}`;
-    axios.get(currLocation).then((response) => {
-      console.log(response);
-      console.log(response.data[0].name);
-      setCity(response.data[0].name)
-    });
-  }, [lat , lng]);
+    if (lat && lng) {
+      let currLocation = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lng}&limit=${limit}&appid=${API_KEY}`;
+      axios.get(currLocation).then((response) => {
+        console.log(response);
+        console.log(response.data[0].name);
+        setCity(response.data[0].name);
+      });
+    }
+  }, [lat, lng]);
 
   return (
     <div>
-      {location ? (
+      {city ? (
         <div>
           <p>Latitude: {lat}</p>
           <p>Longitude: {lng}</p>
@@ -45,4 +47,3 @@ const Geolocation = () => {
 };
 
 export default Geolocation;
-
