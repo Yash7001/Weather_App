@@ -2,9 +2,9 @@ import SearchBox from "./SearchBox";
 import InfoBox from "./infoBox";
 import React, { useEffect, useState } from "react";
 
-export default function WeatherApp({ city }) {
+export default function WeatherApp() {
   let [weatherInfo, setWeatherInfo] = useState({
-    city: "Ahmedabad",
+    city: "Ghatlodiya Taluka",
     temp: 26.02,
     tempMin: 26.02,
     tempMax: 26.02,
